@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adventure Quest</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Main Menu -->
+        <div id="main-menu" class="menu">
+            <h1>Adventure Quest</h1>
+            <div id="character-select" class="character-select hidden">
+                <h2>Select Your Character</h2>
+                <div class="character-grid">
+                    <div class="character" data-type="warrior">
+                        <img src="assets/warrior.png" alt="Warrior">
+                        <h3>Warrior</h3>
+                    </div>
+                    <div class="character" data-type="mage">
+                        <img src="assets/mage.png" alt="Mage">
+                        <h3>Mage</h3>
+                    </div>
+                    <div class="character" data-type="archer">
+                        <img src="assets/archer.png" alt="Archer">
+                        <h3>Archer</h3>
+                    </div>
+                </div>
+                <button class="button" onclick="startGame()">Start Adventure</button>
+            </div>
+            <nav class="menu-buttons">
+                <button class="button" type="button" aria-label="Play game" onclick="showCharacterSelect()">Play</button>
+                <button class="button" type="button" aria-label="View high scores" onclick="game.showHighScores()">High Scores</button>
+                <button class="button" type="button" aria-label="Open settings" onclick="game.showSettings()">Settings</button>
+                <button class="button" type="button" aria-label="View help" onclick="game.showHelp()">Help</button>
+                <button class="button download-button" type="button" aria-label="Download game" onclick="downloadGame()">
+                    Download Game
+                    <div class="platform-select hidden">
+                        <a href="downloads/game-windows.zip" data-platform="windows">Windows</a>
+                        <a href="downloads/game-mac.zip" data-platform="mac">MacOS</a>
+                        <a href="downloads/game-android.apk" data-platform="android">Android</a>
+                        <a href="downloads/game-ios.ipa" data-platform="ios">iOS</a>
+                    </div>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Game Canvas -->
+        <canvas id="gameCanvas" class="hidden"></canvas>
+
+        <!-- HUD -->
+        <div id="hud" class="hidden">
+            <div class="stats">
+                <div class="health-bar"></div>
+                <div class="experience-bar"></div>
+                <div class="level-display">Level: <span id="level">1</span></div>
+                <div class="score-display">Score: <span id="score">0</span></div>
+            </div>
+            <div class="inventory"></div>
+        </div>
+
+        <!-- Pause Menu -->
+        <div id="pause-menu" class="menu hidden">
+            <h2>Paused</h2>
+            <button class="button" onclick="game.resume()">Resume</button>
+            <button class="button" onclick="game.restart()">Restart</button>
+            <button class="button" onclick="game.exitToMenu()">Exit to Menu</button>
+        </div>
+    </div>
+
+    <!-- Load game scripts -->
+    <script src="engine.js"></script>
+    <script src="characters.js"></script>
+    <script src="powerups.js"></script>
+    <script src="enemies.js"></script>
+    <script src="world.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

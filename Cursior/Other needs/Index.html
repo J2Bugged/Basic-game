@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Game Title</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="menu-container">
+            <div id="main-menu" class="menu">
+                <h1>Game Title</h1>
+                <button onclick="startGame()">Play</button>
+                <button onclick="showHighScores()">High Scores</button>
+                <button onclick="showSettings()">Settings</button>
+                <button onclick="showHelp()">Help</button>
+            </div>
+            
+            <div id="high-scores" class="menu hidden">
+                <h2>High Scores</h2>
+                <div id="scores-list"></div>
+                <button class="button" onclick="game.showMainMenu()">Back</button>
+            </div>
+
+            <div id="settings" class="menu hidden">
+                <h2>Settings</h2>
+                <div class="setting-item">
+                    <label>Music Volume: </label>
+                    <input type="range" id="musicVolume" min="0" max="100" value="50">
+                </div>
+                <div class="setting-item">
+                    <label>Sound Effects: </label>
+                    <input type="range" id="sfxVolume" min="0" max="100" value="50">
+                </div>
+                <div class="setting-item">
+                    <label>Difficulty: </label>
+                    <select id="difficulty">
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+                <button class="button" onclick="game.saveSettings()">Save</button>
+                <button class="button" onclick="game.showMainMenu()">Back</button>
+            </div>
+        </div>
+
+        <canvas id="gameCanvas"></canvas>
+        
+        <div id="game-ui" class="hidden">
+            <div class="score-display">Score: <span id="score">0</span></div>
+            <div class="lives-display">Lives: <span id="lives">3</span></div>
+            <div class="level-display">Level: <span id="level">1</span></div>
+        </div>
+
+        <div id="pause-menu" class="menu hidden">
+            <h2>Paused</h2>
+            <button onclick="resumeGame()">Resume</button>
+            <button onclick="restartGame()">Restart</button>
+            <button onclick="quitGame()">Quit to Menu</button>
+        </div>
+    </div>
+
+    <!-- Load audio files -->
+    <audio id="backgroundMusic" src="assets/audio/background.mp3" loop></audio>
+    <audio id="collectSound" src="assets/audio/collect.mp3"></audio>
+    <audio id="gameOverSound" src="assets/audio/gameover.mp3"></audio>
+
+    <!-- Load game scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/entity.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/enemy.js"></script>
+    <script src="js/powerup.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
